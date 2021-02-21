@@ -6,5 +6,6 @@
     "expiry-date": "Expiry Date:",
     "remaining-time": "Remaining Time:",
     "registrar": "Registrar:",
+    "nameservers": "Nameservers:",
     "unavailable": "Unavailable"
 }

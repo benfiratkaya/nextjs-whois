@@ -57,6 +57,14 @@ const WhoisResultData = ({ result }) => {
                     </a>
                   </td>
                 </tr>
+                <tr>
+                  <th scope="row">{t("nameservers")}</th>
+                  <td>
+                    {data.nameServer.split(" ").map((nameServer) => (
+                      <span className="d-block">{nameServer}</span>
+                    ))}
+                  </td>
+                </tr>
               </tbody>
             </table>
             <pre className="whois-raw-result">{data.rawData}</pre>
