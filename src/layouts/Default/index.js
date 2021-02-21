@@ -23,7 +23,7 @@ const DefaultLayout = (props) => {
               key={locale}
               rel="alternate"
               hrefLang={locale}
-              href={`${appConfig.URL}${locale}${asPath}`}
+              href={`${appConfig.URL}/${locale}${asPath}`}
             />
           )
         )}
