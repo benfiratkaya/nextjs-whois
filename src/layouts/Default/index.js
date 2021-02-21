@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import appConfig from "../../../config/app";
 
 const DefaultLayout = (props) => {
   const { asPath, locales } = useRouter();
@@ -15,14 +16,14 @@ const DefaultLayout = (props) => {
               key={locale}
               rel="alternate"
               hrefLang="x-default"
-              href={`https://www.licenset.com/`}
+              href={appConfig.URL}
             />
           ) : (
             <link
               key={locale}
               rel="alternate"
               hrefLang={locale}
-              href={`https://www.licenset.com/${locale}${asPath}`}
+              href={`${appConfig.URL}${locale}${asPath}`}
             />
           )
         )}
