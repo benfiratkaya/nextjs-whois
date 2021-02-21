@@ -1,0 +1,45 @@
+{
+  "name": "nextjs-whois",
+  "version": "1.0.0",
+  "description": "WHOIS query with Next.js",
+  "author": "Firat Kaya",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://www.benfiratkaya.com/",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benfiratkaya/nextjs-whois.git"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "change-case": "^4.1.2",
+    "dedent-js": "^1.0.1",
+    "flag-icon-css": "3.5.0",
+    "html-entities": "^2.1.0",
+    "moment": "^2.29.1",
+    "next": "^10.0.5",
+    "next-redux-wrapper": "^6.0.2",
+    "next-themes": "^0.0.10",
+    "next-translate": "^1.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-loading-skeleton": "^2.1.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^6.1.2",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.32.8",
+    "select2": "4.0.13",
+    "whois": "^2.13.3"
+  }
+}

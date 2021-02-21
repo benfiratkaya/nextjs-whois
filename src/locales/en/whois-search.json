@@ -1,0 +1,7 @@
+{
+    "tab-single": "Single Domain Search",
+    "tab-bulk": "Bulk Domain Search",
+    "input-placeholder-single": "google.com",
+    "input-placeholder-bulk": "Write a domain per line.",
+    "search": "Search"
+}

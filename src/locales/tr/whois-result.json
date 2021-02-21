@@ -1,0 +1,10 @@
+{
+    "title": "\"{{domain}}\" için WHOIS arama sonuçları",
+    "status": "Durum:",
+    "register-date": "Kayıt Tarihi:",
+    "update-date": "Güncelleme Tarihi:",
+    "expiry-date": "Bitiş Tarihi:",
+    "remaining-time": "Kalan Gün:",
+    "registrar": "Kayıt Firması:",
+    "unavailable": "Kayda Müsait Değil"
+}
