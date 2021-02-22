@@ -6,77 +6,112 @@ const WhoisResultData = ({ result }) => {
 
   return (
     <div>
-      {result.map((data) => (
-        <div className="card mb-3" key={data.domain}>
-          <div className="card-header">
-            {t("title", { domain: data.domain })}
-          </div>
-          <div className="card-body">
-            <div className="table-responsive">
-              <table className="table">
-                <tbody>
-                  <tr>
-                    <th scope="row" className="border-0">
-                      {t("status")}
-                    </th>
-                    <td className="border-0">
-                      <span className="badge badge-danger">
-                        {t("unavailable")}
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("register-date")}</th>
-                    <td>{moment(data.creationDate).format("MM/DD/YYYY")}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("update-date")}</th>
-                    <td>{moment(data.updatedDate).format("MM/DD/YYYY")}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("expiry-date")}</th>
-                    <td>
-                      {moment(data.registrarRegistrationExpirationDate).format(
-                        "MM/DD/YYYY"
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("remaining-time")}</th>
-                    <td>
-                      {moment(data.registrarRegistrationExpirationDate).diff(
-                        moment(),
-                        "days"
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("registrar")}</th>
-                    <td>
-                      <a
-                        href={data.registrarUrl}
-                        target="_blank"
-                        rel="nofollow"
-                      >
-                        {data.registrar}
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{t("nameservers")}</th>
-                    <td>
-                      {data.nameServer.split(" ").map((nameServer) => (
-                        <span className="d-block">{nameServer}</span>
-                      ))}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+      {result.map((data) =>
+        data.error ? (
+          <div className="card mb-4" key={data.domainName}>
+            <div className="card-header bg-warning text-dark">
+              {t("title", { domain: data.domainName })}
             </div>
-            <pre className="whois-raw-result">{data.rawData}</pre>
+            <div className="card-body">
+              <div className="alert bg-danger text-white mb-0">
+                {data.message}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ) : (
+          <div className="card mb-4" key={data.domainName}>
+            <div
+              className={
+                "card-header " + (data.isAvailable ? "bg-success" : "bg-danger")
+              }
+            >
+              {t("title", { domain: data.domainName })}
+            </div>
+            <div className="card-body">
+              {data.isAvailable ? (
+                <div className="alert bg-success text-white mb-0">
+                  {t("available")}
+                </div>
+              ) : (
+                <div>
+                  <div className="table-responsive">
+                    <table className="table">
+                      <tbody>
+                        <tr>
+                          <th scope="row" className="border-0">
+                            {t("status")}
+                          </th>
+                          <td className="border-0">
+                            <span className="badge badge-danger">
+                              {t("unavailable")}
+                            </span>
+                          </td>
+                        </tr>
+                        {data.creationDate && (
+                          <tr>
+                            <th scope="row">{t("register-date")}</th>
+                            <td>
+                              {moment(data.creationDate).format("MM/DD/YYYY")}
+                            </td>
+                          </tr>
+                        )}
+                        {data.updatedDate && (
+                          <tr>
+                            <th scope="row">{t("update-date")}</th>
+                            <td>
+                              {moment(data.updatedDate).format("MM/DD/YYYY")}
+                            </td>
+                          </tr>
+                        )}
+                        {data.expirationDate && (
+                          <tr>
+                            <th scope="row">{t("expiry-date")}</th>
+                            <td>
+                              {moment(data.expirationDate).format("MM/DD/YYYY")}
+                            </td>
+                          </tr>
+                        )}
+                        {data.expirationDate && (
+                          <tr>
+                            <th scope="row">{t("remaining-time")}</th>
+                            <td>
+                              {moment(data.expirationDate).diff(
+                                moment(),
+                                "days"
+                              )}
+                            </td>
+                          </tr>
+                        )}
+                        {data.registrar && (
+                          <tr>
+                            <th scope="row">{t("registrar")}</th>
+                            <td>{data.registrar}</td>
+                          </tr>
+                        )}
+                        {data.nameServers && (
+                          <tr>
+                            <th scope="row">{t("nameservers")}</th>
+                            <td>
+                              {data.nameServers.map((nameServer) => (
+                                <span className="d-block" key={nameServer}>
+                                  {nameServer}
+                                </span>
+                              ))}
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                  {data.raw && (
+                    <pre className="whois-raw-result">{data.raw}</pre>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 };

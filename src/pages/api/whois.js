@@ -1,4 +1,4 @@
-import whois from "../../libs/whois-json";
+import whois from "whois-parsed-v2";
 
 const WhoisQuery = async (req, res) => {
   res.statusCode = 200;
@@ -8,11 +8,16 @@ const WhoisQuery = async (req, res) => {
       const results = [];
       await Promise.all(
         req.body.domains.split("\n").map(async (domain) => {
-          const result = await whois(domain);
-          results.push({
-            ...result,
-            domain,
-          });
+          try {
+            const result = await whois.lookup(domain);
+            results.push(result);
+          } catch (error) {
+            results.push({
+              domainName: domain,
+              error: true,
+              message: error.message,
+            });
+          }
         })
       );
       res.json(results);
