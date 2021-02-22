@@ -22,7 +22,8 @@ const WhoisResultData = ({ result }) => {
           <div className="card mb-4" key={data.domainName}>
             <div
               className={
-                "card-header " + (data.isAvailable ? "bg-success" : "bg-danger")
+                "card-header text-white " +
+                (data.isAvailable ? "bg-success" : "bg-danger")
               }
             >
               {t("title", { domain: data.domainName })}
