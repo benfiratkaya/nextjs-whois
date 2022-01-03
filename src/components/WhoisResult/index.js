@@ -8,9 +8,7 @@ const WhoisResult = ({ whois }) => {
     <div className="mt-4" id="whois-result">
       {whois.fetching ? (
         <WhoisResultLoading />
-      ) : whois.data ? (
-        <WhoisResultData result={whois.data} />
-      ) : null}
+      ) : whois.data && (<WhoisResultData result={whois.data} />)}
     </div>
   );
 };
